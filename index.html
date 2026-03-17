@@ -1,42 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Basic Calculator</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quote Generator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="calculator">
-    <h1>Calculator</h1>
-    <input type="text" id="display" placeholder="0" readonly />
 
-    <div class="buttons">
-      <button onclick="clearDisplay()">C</button>
-      <button onclick="deleteLast()">DEL</button>
-      <button onclick="appendValue('/')">/</button>
-      <button onclick="appendValue('*')">*</button>
+    <div class="container">
+        <h1>💬 Random Quote Generator</h1>
 
-      <button onclick="appendValue('7')">7</button>
-      <button onclick="appendValue('8')">8</button>
-      <button onclick="appendValue('9')">9</button>
-      <button onclick="appendValue('-')">-</button>
+        <div class="quote-box">
+            <p id="quote">Click the button to get a quote!</p>
+            <h3 id="author"></h3>
+        </div>
 
-      <button onclick="appendValue('4')">4</button>
-      <button onclick="appendValue('5')">5</button>
-      <button onclick="appendValue('6')">6</button>
-      <button onclick="appendValue('+')">+</button>
-
-      <button onclick="appendValue('1')">1</button>
-      <button onclick="appendValue('2')">2</button>
-      <button onclick="appendValue('3')">3</button>
-      <button class="equal" onclick="calculateResult()">=</button>
-
-      <button class="zero" onclick="appendValue('0')">0</button>
-      <button onclick="appendValue('.')">.</button>
+        <button onclick="generateQuote()">New Quote</button>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
