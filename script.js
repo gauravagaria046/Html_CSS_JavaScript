@@ -1,21 +1,7 @@
-const display = document.getElementById("display");
+const list = document.querySelectorAll(".list");
 
-function appendValue(value) {
-  display.value += value;
+function activeLink() {
+    list.forEach((item) => item.classList.remove("active"));
+    this.classList.add("active");
 }
-
-function clearDisplay() {
-  display.value = "";
-}
-
-function deleteLast() {
-  display.value = display.value.slice(0, -1);
-}
-
-function calculateResult() {
-  try {
-    display.value = eval(display.value);
-  } catch (error) {
-    display.value = "Error";
-  }
-}
+list.forEach((item) => item.addEventListener("click", activeLink));
