@@ -1,66 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Magic Navigation Menu Indicator</title>
-        <link rel="stylesheet" href="./style.css" />
-    </head>
 
-    <body>
-        <div class="navigation">
-            <ul>
-                <li class="list active">
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="home-outline"></ion-icon>
-                        </span>
-                        <span class="text">Home</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="person-outline"></ion-icon>
-                        </span>
-                        <span class="text">Profile</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="chatbubble-outline"></ion-icon>
-                        </span>
-                        <span class="text">Message</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="camera-outline"></ion-icon>
-                        </span>
-                        <span class="text">Photos</span>
-                    </a>
-                </li>
-                <li class="list">
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="settings-outline"></ion-icon>
-                        </span>
-                        <span class="text">Settings</span>
-                    </a>
-                </li>
-                <div class="indicator"></div>
-            </ul>
+  <head>
+    <meta charset="UTF-8">
+    <title>Invitation</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <div class="frame">
+      <div id="button_open_envelope" style="text-align: center;">
+        Open
+      </div>
+      <div class="message" style="text-align: center;">
+        <div>
+          <br>
+          <br>
+          <h1 >Invitation</h1>
+          <h3>You're invited to</h3>
+          <h2 id="name">SAM <span id="weds">weds</span> SARAH</h2>
+          <h3>Venue: The Oberoi Udaivilas, Udaipur</h3>
+          <h3>28-10-2025 | 20:00</h3>
         </div>
+      </div>
+      <div class="bottom"></div>
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="top"></div>
+    </div>
+  </div>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js'></script><script  src="./script.js"></script>
 
-        <script
-            type="module"
-            src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-        ></script>
-        <script
-            nomodule
-            src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-        ></script>
-        <script src="./script.js"></script>
-    </body>
+  </body>
+  
 </html>
