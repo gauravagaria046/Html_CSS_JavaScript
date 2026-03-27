@@ -1,36 +1,64 @@
-$(document)
-    .ready(function() {
-        $('.frame')
-            .click(function() {
-                $('.top')
-                    .addClass('open');
-                $('.message')
-                    .addClass('pull');
-            })
-    });
+var keys = document.querySelectorAll("#calc span");
+var operators = ["+", "-", "x", "÷"];
+var decimalAdded = false;
 
-// Get the modal
-var modal = document.getElementById('myModal');
+for (var i = 0; i < keys.length; i++) {
+  keys[i].onclick = function (e) {
+    var input = document.querySelector(".display");
+    var inputVal = input.innerHTML;
+    var btnVal = this.innerHTML;
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+    if (btnVal == "C") {
+      input.innerHTML = "";
+      decimalAdded = false;
+    } else if (btnVal == "=") {
+      var equation = inputVal;
+      var lastChar = equation[equation.length - 1];
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+      equation = equation.replace(/x/g, "*").replace(/÷/g, "/");
 
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-    modal.style.display = "block";
-}
+      if (operators.indexOf(lastChar) > -1 || lastChar == ".")
+        equation = equation.replace(/.$/, "");
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
+      if (equation) input.innerHTML = eval(equation);
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+      decimalAdded = false;
+    } else if (operators.indexOf(btnVal) > -1) {
+      var lastChar = inputVal[inputVal.length - 1];
+
+      if (inputVal != "" && operators.indexOf(lastChar) == -1)
+        input.innerHTML += btnVal;
+      else if (inputVal == "" && btnVal == "-") input.innerHTML += btnVal;
+
+      if (operators.indexOf(lastChar) > -1 && inputVal.length > 1) {
+        input.innerHTML = inputVal.replace(/.$/, btnVal);
+      }
+
+      decimalAdded = false;
+    } else if (btnVal == ".") {
+      if (!decimalAdded) {
+        input.innerHTML += btnVal;
+        decimalAdded = true;
+      }
+    } else {
+      input.innerHTML += btnVal;
     }
+
+    // prevent page jumps
+    e.preventDefault();
+  };
 }
+
+const toggleSwitch = document.querySelector(
+  '.theme-switch input[type="checkbox"]'
+);
+
+function switchTheme(e) {
+  if (e.target.checked) {
+    document.documentElement.setAttribute("data-theme", "dark");
+  } else {
+    document.documentElement.setAttribute("data-theme", "light");
+  }
+}
+
+toggleSwitch.addEventListener("change", switchTheme, false);
