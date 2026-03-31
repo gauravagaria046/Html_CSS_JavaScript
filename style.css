@@ -1,133 +1,117 @@
-:root {
-	--primary-color: #ff6b6b;
-	--secondary-color: #4ecdc4;
-	--text-color: #ffffff;
-	--pixel-font: "VT323", monospace;
-}
-
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	user-select: none;
+  box-sizing: border-box;
 }
-
 body {
-	overflow: hidden;
-	background-color: #222;
-	font-family: var(--pixel-font);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
-
-#game-container {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	z-index: 1;
+:root {
+  --color: hsl(var(--hue), 80%, 60%);
 }
-
-#ui-layer {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 10;
-	pointer-events: none;
-	/* Let clicks pass through except on buttons */
+.t-shirt {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
-
-/* Enable pointer events on interactive elements */
+.t-shirt__shirt {
+  fill: var(--color);
+}
+.t-shirt__wrapper {
+  position: relative;
+}
+.t-shirt__cannon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  transform: translate(-50%, 0);
+}
+.t-shirt__cannon svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.cannon__shirt path {
+  fill: var(--color);
+}
+.cannon__band {
+  fill: #ffd500;
+}
+.cannon__plastic {
+  fill: rgba(163,231,245,0.35);
+}
+.cannon__shine {
+  fill: rgba(255,255,255,0.5);
+}
+.button {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  padding-left: calc(1rem + 50px);
+  position: relative;
+  border-radius: 6px;
+  border: 0;
+  color: #fff;
+  outline: transparent;
+  min-width: 120px;
+  -webkit-clip-path: inset(-1000% -1000% 0 0);
+  clip-path: inset(-1000% -1000% 0 0);
+}
+.button__text {
+  position: relative;
+}
+.button__text .dummy {
+  color: transparent;
+}
+.button__text > .text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+}
+.button .word {
+  display: inline-block;
+  -webkit-clip-path: inset(0 0 0 0);
+  clip-path: inset(0 0 0 0);
+}
+.button .char {
+  display: inline-block;
+}
+.button__shirt {
+  position: absolute;
+  height: 32px;
+  width: 32px;
+  top: 50%;
+  left: calc(0.5rem + 25px);
+  transform: translate(-50%, -50%);
+}
+.t-shirt__container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  border-radius: 6px;
+}
 button {
-	pointer-events: auto;
+  --hue: 260;
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  outline: transparent;
+  background: #17171B;
+  box-shadow: 2px 2px 4px 0px #333;
+  transition: box-shadow 0.15s;
 }
-
-.center-screen {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	text-align: center;
-	background: rgba(0, 0, 0, 0.4);
-	padding: 2rem 4rem;
-	border-radius: 1rem;
-	backdrop-filter: blur(4px);
-	border: 4px solid #fff;
-	box-shadow: 0 10px 0 rgba(0, 0, 0, 0.2);
-}
-
-.title {
-	font-size: 6rem;
-	color: #ffd700;
-	text-shadow: 4px 4px #ff6b6b;
-	margin-bottom: 0.5rem;
-	line-height: 1;
-}
-
-.subtitle {
-	font-size: 2.5rem;
-	color: #fff;
-	margin-bottom: 2rem;
-	text-transform: uppercase;
-}
-
-button {
-	background: #fff;
-	color: #222;
-	border: none;
-	padding: 1rem 2rem;
-	font-size: 2.5rem;
-	font-family: var(--pixel-font);
-	cursor: pointer;
-	transition: transform 0.1s, box-shadow 0.1s;
-	box-shadow: 0 6px 0 #999;
-}
-
 button:active {
-	transform: translateY(6px);
-	box-shadow: 0 0 0 #999;
-}
-
-button:hover {
-	background: #f0f0f0;
-}
-
-#instructions {
-	position: absolute;
-	top: 20px;
-	right: 20px;
-	background: linear-gradient(135deg,
-			rgba(255, 255, 255, 0.2),
-			rgba(255, 255, 255, 0.05));
-	padding: 1rem;
-	border-radius: 10px;
-	color: #fff;
-	font-size: 1.5rem;
-	text-align: right;
-	backdrop-filter: blur(4px);
-	border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.key {
-	display: inline-block;
-	border: 2px solid #fff;
-	border-radius: 4px;
-	padding: 0 6px;
-	margin: 0 2px;
-	font-weight: bold;
-	background: rgba(0, 0, 0, 0.3);
-}
-
-#score-display {
-	position: absolute;
-	top: 20px;
-	left: 20px;
-	font-size: 3rem;
-	color: #fff;
-	text-shadow: 2px 2px #000;
-}
-
-.hidden {
-	display: none !important;
+  box-shadow: 0px 0px 0px 0px #333;
 }
